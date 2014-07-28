@@ -6,6 +6,27 @@
 @import "mixins.less";
 
 @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800);
+
+html, body {
+  //font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+// Content layout
+.container {
+
+  &.full {
+    width: 100%;
+    max-width: 1920px;
+    padding-left: 0; padding-right: 0;
+  }
+}
 
 // Slider
 .nextend-widget-bullet {bottom: 10% !important;} // Original 1%
@@ -20,7 +41,7 @@
   z-index: 4;
 
   &.paddingfix {
-    padding: @navbar-height;
+    padding: 34px;
   }
 
   .navbar-default {
@@ -30,14 +51,33 @@
 
     &.navbar-fixed-top {
       background-color: @menu-color;
+
+      .navbar-nav > .active > a {
+        .transition(all 0.5s);
+      }
     }
 
     .navbar-nav {
-      font-family: 'Lato', sans-serif;
+      //font-family: 'Lato', sans-serif;
+      font-family: 'Open Sans Condensed', sans-serif;
       font-weight: 800;
       margin: 0 auto;
       display: table;
       float: none;
+
+      > .active > a {
+        color: #fff;
+        .opacity(1);
+        background-color: rgba(255, 255, 255, 0.5);
+        .transition(all 0.5s);
+
+        /*&:after {
+          content: "";
+          display:block;
+          height: 5px;
+          color: @color-blue;
+        }*/
+      }
 
       li > a {
         color: #fff;
@@ -51,3 +91,140 @@
     }
   }
 }
+
+// WELCOME TEXTS
+.welcometext {
+  margin-bottom: 80px;
+  @icon-color: @color-pink;
+
+  .col-md-4 {
+    &:hover, &:focus {
+
+      h3 {
+        color: @icon-color;
+
+        &:hover {}
+
+        &:after {
+          .animation(linewidth .3s linear 1);
+          -webkit-animation-fill-mode: forwards;
+          background-color: @icon-color;
+        }
+      }
+
+      .iconbox {
+        color: @icon-color;
+        border: 1px solid #fff;
+        background-color: @icon-color;
+      }
+
+      .fa {
+        color: #fff;
+        .animation(iconsize 0.3s linear);
+      }
+  }
+
+  }
+
+  .iconbox {
+    width: 80px; height: 80px;
+    display: table;
+    overflow: hidden;
+    margin: 0 auto;
+    color: #fff;
+    border: 1px solid @icon-color;
+    background-color: #fff;
+    .transition(all 0.5s);
+
+    .fa {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      color: @icon-color;
+      .transition(all 0.5s);
+    }
+  }
+
+  h3 {
+    text-align: center;
+    font-weight: 700;
+
+    &:after {
+      content: "";
+      display: block;
+      height: 1px;
+      width: 25%;
+      margin: 20px auto;
+      background-color: @gray-light;
+    }
+  }
+
+  p, .textwidget {
+    color: @gray-light;
+  }
+}
+
+// RECENT NEWS
+.recentpostscontainer {
+  height: 300px;
+  padding: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  .transition(all 400ms ease);
+  position: relative;
+  margin-top: 100px;
+  .opacity(0);
+  overflow: hidden;
+
+  &.appeared{
+    margin-top: 0px;
+    .opacity(1);
+  }
+
+  .newsinfo {
+    position: absolute; top: 240px;
+    width: 100%; height: 100%;
+    background-color: #fff;
+    .transition(top 0.5s ease);
+    padding: 0 35px;
+
+    &:hover, &:focus {
+      top: 0px;
+
+      > h3 {
+        color: @color-blue;
+
+        &:hover {}
+
+        &:after {
+          .animation(linewidth .3s linear 1);
+          -webkit-animation-fill-mode: forwards;
+          .animation-delay(0.5s);
+          background-color: @color-blue;
+        }
+      }
+    }
+
+    h3 {
+      text-align: center;
+      font-weight: 700;
+      .transition(all 0.5s);
+
+      &:after {
+        content: "";
+        display: block;
+        height: 1px;
+        width: 25%;
+        margin: 20px auto;
+        background-color: @gray-light;
+        .transition(all .5s);
+      }
+    }
+    p {
+      color: @gray-light;
+      font-size: 13px;
+    }
+  }
+}
+

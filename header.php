@@ -6,6 +6,10 @@
 <title><?php wp_title( '|', true, 'right' ); ?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<script type="text/javascript">
+    var ajaxurl = "<?php echo admin_url('admin-ajax.php');?>";
+</script>
 <?php wp_head(); ?>
 </head>
 
@@ -55,7 +59,4 @@
 </nav><!-- .site-navigation -->
 
 <div class="main-content">
-	<div class="container">
-		<div class="row">
-			<div id="content" class="main-content-inner col-sm-12 col-md-8">
 

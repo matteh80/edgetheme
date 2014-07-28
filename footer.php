@@ -7,9 +7,7 @@
  * @package _tk
  */
 ?>
-			</div><!-- close .*-inner (main-content or sidebar, depending if sidebar is used) -->
-		</div><!-- close .row -->
-	</div><!-- close .container -->
+
 </div><!-- close .main-content -->
 
 <footer id="colophon" class="site-footer" role="contentinfo">

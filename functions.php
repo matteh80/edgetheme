@@ -1,4 +1,8 @@
 <?php
+//include "custom-functions.php";
+$dirName = dirname(__FILE__);
+$baseName = basename(realpath($dirName));
+require_once ("$dirName/custom-functions.php");
 /**
  * _tk functions and definitions
  *
@@ -85,6 +89,30 @@ function _tk_widgets_init() {
 		'before_title'  => '<h3 class="widget-title">',
 		'after_title'   => '</h3>',
 	) );
+    register_sidebar( array(
+        'name'          => __( 'Frontpage Left', '_tk' ),
+        'id'            => 'frontpage-1',
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</aside>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ) );
+    register_sidebar( array(
+        'name'          => __( 'Frontpage Middle', '_tk' ),
+        'id'            => 'frontpage-2',
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</aside>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ) );
+    register_sidebar( array(
+        'name'          => __( 'Frontpage Right', '_tk' ),
+        'id'            => 'frontpage-3',
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</aside>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ) );
 }
 add_action( 'widgets_init', '_tk_widgets_init' );
 
@@ -107,6 +135,7 @@ function _tk_scripts() {
 
 	wp_enqueue_script( '_tk-skip-link-focus-fix', get_template_directory_uri() . '/includes/js/skip-link-focus-fix.js', array(), '20130115', true );
 
+    wp_enqueue_script('appear_js', get_template_directory_uri() . '/includes/js/jquery.appear.js', array('jquery') );
     wp_enqueue_script('scripts_js', get_template_directory_uri() . '/includes/js/scripts.js', array('jquery') );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -119,6 +148,11 @@ function _tk_scripts() {
 
 }
 add_action( 'wp_enqueue_scripts', '_tk_scripts' );
+
+function enable_ajax_functionality() {
+    wp_localize_script('ajaxify', 'ajaxify_function', array('ajaxurl' => admin_url('admin-ajax.php')));
+}
+add_action('template_redirect', 'enable_ajax_functionality');
 
 /**
  * Implement the Custom Header feature.
