@@ -127,6 +127,8 @@ function _tk_scripts() {
 	// load _tk styles
 	wp_enqueue_style( '_tk-style', get_stylesheet_uri() );
 
+    wp_enqueue_style( 'timepicker', get_template_directory_uri() . '/includes/resources/bootstrap/css/jquery-ui-timepicker-addon.css' );
+
 	// load bootstrap js
 	wp_enqueue_script('_tk-bootstrapjs', get_template_directory_uri().'/includes/resources/bootstrap/js/bootstrap.js', array('jquery') );
 
@@ -135,6 +137,7 @@ function _tk_scripts() {
 
 	wp_enqueue_script( '_tk-skip-link-focus-fix', get_template_directory_uri() . '/includes/js/skip-link-focus-fix.js', array(), '20130115', true );
 
+    wp_enqueue_script('timepickers_js', get_template_directory_uri() . '/includes/js/jquery-ui-timepicker-addon.js', array('jquery') );
     wp_enqueue_script('appear_js', get_template_directory_uri() . '/includes/js/jquery.appear.js', array('jquery') );
     wp_enqueue_script('scripts_js', get_template_directory_uri() . '/includes/js/scripts.js', array('jquery') );
 
